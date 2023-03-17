@@ -10,17 +10,14 @@ function initApp() {
 }
 
 function addToDo() {
-    const listItem = document.createElement("li");
-    const listText = document.createElement("span");
-    const listBtn = document.createElement("button");
+    list.insertAdjacentHTML(
+        "beforeend",
+        /*html*/ `
+        <li><span>${newToDo.value}</span> <button>Delete</button></li>
+    `
+    );
 
-    listItem.appendChild(listText);
-    listText.textContent = newToDo.value;
-    listItem.appendChild(listBtn);
-    listBtn.textContent = "Delete";
-    list.appendChild(listItem);
-
-    listBtn.addEventListener("click", removeToDo);
+    list.querySelector("button:last-child").addEventListener("click", removeToDo);
 
     // reset input and focus
     newToDo.value = "";
