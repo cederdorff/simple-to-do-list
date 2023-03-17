@@ -10,12 +10,7 @@ function initApp() {
 }
 
 function addToDo() {
-    list.insertAdjacentHTML(
-        "beforeend",
-        /*html*/ `
-        <li><span>${newToDo.value}</span> <button>Delete</button></li>
-    `
-    );
+    list.insertAdjacentHTML("beforeend", /*html*/ `<li><span>${newToDo.value}</span> <button>Delete</button></li>`);
 
     list.querySelector("button:last-child").addEventListener("click", removeToDo);
 
