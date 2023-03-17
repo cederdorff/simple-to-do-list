@@ -76,7 +76,7 @@ input {
 li button {
     font-size: 0.8em;
     width: initial;
-    margin: 1em 1em;
+    margin: 0 1em;
 }
 
 ul {
@@ -84,4 +84,8 @@ ul {
     width: 100%;
     max-width: 350px;
     padding: 1em;
+}
+
+li {
+    margin-bottom: 10px;
 }
