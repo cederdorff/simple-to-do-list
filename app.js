@@ -10,7 +10,14 @@ function initApp() {
 }
 
 function addToDo() {
-    list.insertAdjacentHTML("beforeend", /*html*/ `<li><span>${newToDo.value}</span> <button>Delete</button></li>`);
+    list.insertAdjacentHTML(
+        "beforeend",
+        /*html*/ `
+        <li>
+            <span>${newToDo.value}</span>
+            <button>Delete</button>
+        </li>`
+    );
 
     list.querySelector("li:last-child button").addEventListener("click", removeToDo);
 
@@ -20,5 +27,5 @@ function addToDo() {
 }
 
 function removeToDo() {
-    list.removeChild(this.parentNode);
+    this.parentNode.remove();
 }
