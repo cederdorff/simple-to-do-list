@@ -10,16 +10,23 @@ function initApp() {
 }
 
 function addToDo() {
+    // create element: li, span, button
     const listItem = document.createElement("li");
     const listText = document.createElement("span");
     const listBtn = document.createElement("button");
 
-    listItem.appendChild(listText);
+    //add content to span and button
     listText.textContent = newToDo.value;
-    listItem.appendChild(listBtn);
     listBtn.textContent = "Delete";
+
+    // append span and button to li
+    listItem.appendChild(listText);
+    listItem.appendChild(listBtn);
+
+    //append li to list (ul)
     list.appendChild(listItem);
 
+    //add click event to button
     listBtn.addEventListener("click", removeToDo);
 
     // reset input and focus
@@ -28,5 +35,6 @@ function addToDo() {
 }
 
 function removeToDo() {
-    list.removeChild(this.parentNode);
+    // removes the parent node (li) of this (button) from the DOM
+    this.parentNode.remove();
 }
