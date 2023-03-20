@@ -15,11 +15,13 @@ function addToDo() {
         /*html*/ `
         <li>
             <span>${newToDo.value}</span>
-            <button>Delete</button>
+            <button class="btn-delete">Delete</button>
+            <button class="btn-update">Update</button>
         </li>`
     );
 
-    list.querySelector("li:last-child button").addEventListener("click", removeToDo);
+    list.querySelector("li:last-child .btn-delete").addEventListener("click", removeToDo);
+    list.querySelector("li:last-child .btn-update").addEventListener("click", updateToDo);
 
     // reset input and focus
     newToDo.value = "";
@@ -28,4 +30,34 @@ function addToDo() {
 
 function removeToDo() {
     this.parentNode.remove();
+}
+
+function updateToDo() {
+    // remove event listener
+    this.removeEventListener("click", updateToDo);
+    // change button text to Save
+    this.textContent = "Save";
+    // add new event listener - saveToDo
+    this.addEventListener("click", saveToDo);
+
+    // get the span element with the to do text
+    const toDoSpan = this.parentNode.querySelector("span");
+    // set contenteditable to true
+    toDoSpan.setAttribute("contenteditable", true);
+    // set focus
+    toDoSpan.focus();
+}
+
+function saveToDo() {
+    // remove event listener, saveToDo, again
+    this.removeEventListener("click", saveToDo);
+    // change button text back to Update
+    this.textContent = "Update";
+    // add event listener, updateToDo, again
+    this.addEventListener("click", updateToDo);
+
+    // get the span element with the to do text
+    const toDoSpan = this.parentNode.querySelector("span");
+    // set contenteditable to false
+    toDoSpan.setAttribute("contenteditable", false);
 }
