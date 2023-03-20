@@ -7,6 +7,7 @@ const list = document.querySelector("#to-do-list");
 
 function initApp() {
     document.querySelector("#btn-add-item").addEventListener("click", addToDo);
+    newToDo.addEventListener("keyup", enterEvent);
 }
 
 function addToDo() {
@@ -26,6 +27,12 @@ function addToDo() {
     // reset input and focus
     newToDo.value = "";
     newToDo.focus();
+}
+
+function enterEvent(event) {
+    if (event.key === "Enter" || event.keyCode === 13) {
+        addToDo();
+    }
 }
 
 function removeToDo() {
